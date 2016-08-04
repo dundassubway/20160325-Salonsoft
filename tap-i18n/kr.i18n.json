@@ -1,0 +1,19 @@
+﻿{
+  "mainpage": "메인 페이지",
+  "Link": "링크",
+  "Save": "저장",
+  "Telephone Number": "전화번호",
+  "Name": "이름",
+  "Gender": "성별",
+  "Male": "남성",
+  "Female": "여성",
+  "Neither": "잘 모름",
+  "English": "영어",
+  "Chinese": "중국어",
+  "Korean": "한국어",
+  "Edit profile": "프로필 수정",
+  "Website": "웹사이트",
+  "Admin": "관리자",
+  "Staff": "운영자",
+  "Schedule": "스케줄"
+}

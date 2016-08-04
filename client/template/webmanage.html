@@ -1,0 +1,134 @@
+﻿<template name="webmanage">
+    <div class="container">
+        <h1>Website Management <small>manage your website</small></h1>
+        <br />
+        <form class="js-uploadWebsite">
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 form-control-label">Name</label>
+                <div class="col-sm-10">
+                    <p>{{name}}</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="description" placeholder="description" rows="5">{{descrip}}</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-sm-2 form-control-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="address" placeholder="address" value={{address}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 form-control-label">Telephone Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tel" placeholder="telephone number" value={{tel}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="services" class="col-sm-2 form-control-label">Services</label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="services" placeholder="services" value={{Service}}>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="number" min="0.01" step="0.01" max="500" class="form-control" aria-label="Price" placeholder="price" value="{{ServicePrice}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="serviceDuration" placeholder="how long" value={{ServiceDuration}}>
+                        </div>
+                        <div class="col-sm-2">
+                            <span> minutes  </span>
+                            <button type="button" class="btn btn-default btn-sm js-add-service">
+                                <span class="glyphicon glyphicon-plus"></span> 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Sunday" class="col-sm-2 form-control-label">Sunday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Sunday" placeholder="Sunday Hours" value={{Sunday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Monday" class="col-sm-2 form-control-label">Monday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Monday" placeholder="Monday Hours" value={{Monday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Tuesday" class="col-sm-2 form-control-label">Tuesday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Tuesday" placeholder="Tuesday Hours" value={{Tuesday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Wednesday" class="col-sm-2 form-control-label">Wednesday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Wednesday" placeholder="Wednesday Hours" value={{Wednesday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Thursday" class="col-sm-2 form-control-label">Thursday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Thursday" placeholder="Thursday Hours" value={{Thursday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Friday" class="col-sm-2 form-control-label">Friday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Friday" placeholder="Friday Hours" value={{Friday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Saturday" class="col-sm-2 form-control-label">Saturday hours</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Saturday" placeholder="Saturday Hours" value={{Saturday}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-secondary">Upload</button>
+                </div>
+            </div>
+        </form>
+        <label for="logo" class="col-sm-2 form-control-label">Logo</label>
+        <div class="col-sm-10">
+            {{> upload_bootstrap fileTypes='image/*' formData=myFormData}}
+        </div>
+        <br />
+        <label class="col-sm-2 form-control-label">Photos</label>
+        <div class="col-sm-10">
+            {{> upload_bootstrap fileTypes='image/*' multiple=true formData=myFormDataPhoto}}
+        </div>
+        <br />
+        {{> uploadedInfo uploads}}
+
+    </div>
+</template>
+
+<template name="uploadedInfo">
+    <div class="documentList">
+        <ul class="list-inline">
+            {{#each this}}
+            <li class="documentItem">
+                <a href="/upload/{{path}}"><img class="img-del-thumbnail" src="{{src}}"></a><br />
+                <label>{{ name }}</label> <br />
+                {{ size }} Byte<br>
+                {{#if _id}}
+                <a class="btn btn-danger deleteUpload">Delete</a>
+                {{/if}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+

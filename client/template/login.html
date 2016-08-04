@@ -1,0 +1,111 @@
+﻿<template name="_loginButtonsAdditionalLoggedInDropdownActions">
+    <button class="btn btn-default btn-block" id="login-buttons-edit-profile">{{_ "Edit profile"}}</button>
+</template>
+
+<template name="navbar">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Salon Soft</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/adm">{{_ "Admin"}}</a></li>
+            </ul>
+           
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_ language}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="js-english"><a href="#">{{_ "English"}}</a></li>
+                        <li class="js-korean"><a href="#">{{_ "Korean"}}</a></li>
+                        <li class="js-chinese"><a href="#">{{_ "Chinese"}}</a></li>
+                    </ul>
+                </li>
+                {{> loginButtons}} <!-- here -->
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name="adm-navbar">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Salon Soft</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/adm/website">{{_ "Website"}}</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li ><a href="/adm/staff">{{_ "Staff"}}</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li ><a href="/adm/schedule">{{_ "Schedule"}}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_ language}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="js-english"><a href="#">{{_ "English"}}</a></li>
+                        <li class="js-korean"><a href="#">{{_ "Korean"}}</a></li>
+                        <li class="js-chinese"><a href="#">{{_ "Chinese"}}</a></li>
+                    </ul>
+                </li>
+                {{> loginButtons}} <!-- here -->
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name="profile">
+    <div class="container">
+        {{#if currentUser}}
+        <h2>Hello {{username}}!</h2>
+        <form class="form-horizontal js-profile">
+            <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">{{_ "Name"}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{inputName}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inlineRadioOptions" class="col-sm-2 control-label">{{_ "Gender"}}</label>
+                <div class="col-sm-10">
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadioM" value="male" {{genderCheckedM}}> {{_ "Male"}}
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadioF" value="female" {{genderCheckedF}}> {{_ "Female"}}
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadioN" value="neither" {{genderCheckedN}}> {{_ "Neither"}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTel" class="col-sm-2 control-label">{{_ "Telephone Number"}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTel" placeholder="Telephone Number" value="{{inputTel}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">{{_ "Save"}}</button>
+                </div>
+            </div>
+        </form>
+        {{/if}}
+    </div>
+</template>
